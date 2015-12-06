@@ -1,0 +1,61 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes,force:hasRecordId" controller="ContactComponentCtrl" access="global">
+  <ltng:require styles="/resource/slds0120/assets/styles/salesforce-lightning-design-system-ltng.css" />
+  <aura:attribute name="recordId" type="String"/>
+  <aura:handler event="c:externalContactChange" action="{!c.handleExternalChange}"/>
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <div class="slds">
+    <div class="slds-card">
+      <div class="slds-card__header">
+        <h2 class="slds-text-heading--small">
+          Contacts on Opportunity
+        </h2>
+      </div>
+      <div class="slds-card__body" style="padding: 0 4px 4px 4px">
+        <aura:renderIf isTrue="{!v.noRecordIdFound}">
+          <div>Not Record Id Found, apply component to Record Home</div>
+        </aura:renderIf>
+
+        <aura:renderIf isTrue="{!v.error != null}">
+          <pre>{!v.error}</pre>
+        </aura:renderIf>
+
+        <aura:renderIf isTrue="{!v.noContactsFound}">
+          <div>No Contacts found!</div>
+        </aura:renderIf>
+
+        <aura:renderIf isTrue="{!v.contacts.length > 0}">
+          <table class="slds-table slds-table--bordered slds-max-medium-table--stacked-horizontal">
+            <thead>
+              <tr class="slds-text-heading--label">
+                <th scope="col">
+                  <span class="slds-truncate">Contact Id</span>
+                </th>
+                <th scope="col">
+                  <span class="slds-truncate">Contact Name</span>
+                </th>
+                <th scope="col">
+                  <span class="slds-truncate">Contact Account Name</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+            <aura:iteration items="{!v.contacts}" var="contact" indexVar="index" >
+              <tr class="slds-hint-parent">
+                <td data-label="contactId">
+                  <span class="slds-truncate">{!contact.Id}</span>
+                </td>
+                <td data-label="contactId">
+                  <span class="slds-truncate">{!contact.Name}</span>
+                </td>
+                <td data-label="contactName">
+                  <span class="slds-truncate">{!contact.Account.Name}</span>
+                </td>
+              </tr>
+            </aura:iteration>
+            </tbody>
+          </table>
+        </aura:renderIf>
+      </div>
+    </div>
+  </div>
+</aura:component>

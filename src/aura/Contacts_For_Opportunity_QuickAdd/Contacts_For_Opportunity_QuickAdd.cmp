@@ -1,0 +1,38 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes,force:hasRecordId" controller="ContactComponentCtrl" access="global">
+  <ltng:require styles="/resource/slds0120/assets/styles/salesforce-lightning-design-system-ltng.css" />
+  <aura:attribute name="recordId" type="String"/>
+  <aura:attribute name="quickAddStr" type="String" default=""/>
+
+  <div class="slds">
+    <div class="slds-card">
+      <div class="slds-card__header">
+        <h2 class="slds-text-heading--small">
+          Quick Add Contact To Opp
+        </h2>
+      </div>
+      <div class="slds-card__body" style="padding: 0 4px 4px 4px">
+        <aura:renderIf isTrue="{!v.noRecordIdFound}">
+          <div>Not Record Id Found, apply component to Record Home</div>
+        </aura:renderIf>
+
+        <aura:renderIf isTrue="{!v.error != null}">
+          <pre>{!v.error}</pre>
+        </aura:renderIf>
+
+        <aura:renderIf isTrue="{!v.noRecordIdFound != true}">
+          <ui:inputText label="Contact Name" value="{!v.quickAddStr}" updateOn="keyup" keyup="{!c.quickAddKeyUp}" placeholder="Enter new contact name and hit enter" />
+        </aura:renderIf>
+
+        <!-- This error message is going to appear like it's outside of the component due to it's css -->
+        <aura:renderIf isTrue="{!v.incompleteNameEntry == true}">
+          <div class="entry-error">
+            <span>Enter both a first and last name for a contact please!</span>
+            <span class="entry-error-close" onclick="{!c.hideErrorMessage}">x</span>
+          </div>
+        </aura:renderIf>
+        <!-- DEMO: mutating dom outside of component -->
+        <!-- <div onclick="{!c.beAJerk}">Be A Jerk</div> -->
+      </div>
+    </div>
+  </div>
+</aura:component>

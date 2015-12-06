@@ -1,0 +1,22 @@
+.THIS{
+  margin-bottom: 15px;
+}
+.THIS .entry-error {
+  position: absolute;
+  top: 4px;
+  z-index: 9999;
+  width: 50%;
+  left: 25%;
+  min-height: 30px;
+  background-color: pink;
+  border-radius: 4px;
+  text-align: center;
+  padding: 8px;
+}
+
+.THIS .entry-error-close{
+  float:right;
+  padding-right:4px;
+  color: gray;
+  cursor: pointer;
+}

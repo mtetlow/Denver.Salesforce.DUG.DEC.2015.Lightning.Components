@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>ContactComponentCtrl</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Contacts_For_Opportunity</members>
+        <members>Contacts_For_Opportunity_QuickAdd</members>
+        <members>externalContactChange</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>slds0120</members>
+        <name>StaticResource</name>
+    </types>
+    <version>33.0</version>
+</Package>
